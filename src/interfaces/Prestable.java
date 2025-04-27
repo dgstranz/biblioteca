@@ -4,6 +4,6 @@ import model.RecursoBiblioteca;
 import model.Usuario;
 
 public interface Prestable {
-	boolean prestar(Usuario usuario, RecursoBiblioteca recurso);
-	boolean devolver(Usuario usuario, RecursoBiblioteca recurso);
+	boolean prestar(Usuario usuario, String idRecurso);
+	boolean devolver(Usuario usuario, String idRecurso);
 }

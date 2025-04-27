@@ -60,6 +60,18 @@ public class Usuario {
 		this.apellidos = apellidos;
 	}
 	
+	public TipoUsuario getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(TipoUsuario tipo) {
+		this.tipo = tipo;
+	}
+
+	public Map<String, RecursoBiblioteca> getRecursosEnPrestamo() {
+		return recursosEnPrestamo;
+	}
+
 	/**
 	 * Suma 1 al contador de usuarios y lo devuelve.
 	 * @return {@code contador}, una vez incrementado en una unidad

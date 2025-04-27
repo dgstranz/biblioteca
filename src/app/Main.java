@@ -26,11 +26,10 @@ public class Main {
 		gb.registrarUsuario(new Usuario("Ana Isabel", "De Tomás Puente", TipoUsuario.INVESTIGADOR));
 		
 		try {
-			System.out.println(gb.getDescripcionUsuario(5));
+			System.out.println(gb.getDescripcionUsuario(2));
 			System.out.println(biblioteca.getDescripcionRecurso("LIB-00003"));
-		} catch(RecursoNoEncontradoException e) {
-			System.err.println("Error: " + e.getMessage());
-		} catch(UsuarioNoEncontradoException e) {
+			biblioteca.prestar(gb.getUsuario(1), "LIB-00001");
+		} catch(Exception e) {
 			System.err.println("Error: " + e.getMessage());
 		}
 	}
