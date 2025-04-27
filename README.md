@@ -56,23 +56,23 @@ comentar un método se inicia con `/**` y se cierra con `*/`)
 
   * [x] Constructor para `id` y `titulo`.
   * [x] Getter para título y método abstracto `String descripcion()`.
-  * [ ] Subclases de RecursoBiblioteca
+  * [x] Subclases de RecursoBiblioteca
 
 	* [x] `Libro (String autor)`
 	* [ ] `Revista (int numeroEdicion)`
 	* [ ] `DVD (int duracionMinutos)`
 	* [ ] Cada subclase debe:
 
-      * [ ] Llamar al constructor de la superclase.
-      * [ ] Implementar `descripcion()` retornando todos sus datos.
+      * [x] Llamar al constructor de la superclase.
+      * [x] Implementar `descripcion()` retornando todos sus datos.
 
 * [x] `biblioteca.enums.EstadoRecurso` con las opciones `DISPONIBLE`, `PRESTADO` y `RESERVADO`.
-* [ ] `biblioteca.model.Usuario`
+* [x] `biblioteca.model.Usuario`
 
-  * [ ] Atributos `id` (String) y `nombre` (String).
-  * [ ] Constructor y getters.
+  * [x] Atributos `id` (String) y `nombre` (String).
+  * [x] Constructor y getters.
 
-* [ ] `biblioteca.app.Main`
+* [x] `biblioteca.app.Main`
 
 Las estructuras son posibles sugerencias. Si usáramos el atributo id y es un número muy
 largo entonces la key del primer Map “recursos” tendría que ser deltipo adecuado.

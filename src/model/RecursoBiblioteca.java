@@ -5,9 +5,12 @@ import enums.Fondo;
 
 public abstract class RecursoBiblioteca {
 	/**
-	 * Identificador del recurso. Es una cadena de texto formada por un código para el tipo de recurso y una parte numérica.
+	 * Prefijo de clase para la generación de un ID.
+	 * @see services.Biblioteca
 	 */
-	protected String id;
+	protected static final String PREFIJO_ID = "XXX";
+	private static long contador = 0;
+	
 	/**
 	 * Título del recurso
 	 */
@@ -22,7 +25,7 @@ public abstract class RecursoBiblioteca {
 	 * @see enums.EstadoRecurso
 	 */
 	protected EstadoRecurso estado;
-	
+
 	/**
 	 * Constructor por defecto.
 	 * El atributo 'estado' se inicializa a {@code EstadoRecurso.DISPONIBLE}.
@@ -34,13 +37,10 @@ public abstract class RecursoBiblioteca {
 		this.fondo = fondo;
 		this.estado = EstadoRecurso.DISPONIBLE;
 	}
-	
-	public String getId() {
-		return id;
-	}
 
-	public void setId(String id) {
-		this.id = id;
+	// Getters y setters
+	public long getContador() {
+		return contador;
 	}
 
 	public String getTitulo() {
@@ -67,8 +67,7 @@ public abstract class RecursoBiblioteca {
 		this.estado = estado;
 	}
 
-	/**
-	 * Método abstracto para generar un identificador.
-	 */
-	public abstract String generarId();
+	// Funciones abstractas
+	public abstract String getPrefijoId();
+	public abstract long incrementarContador();
 }

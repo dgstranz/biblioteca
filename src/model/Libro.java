@@ -3,12 +3,26 @@ package model;
 import enums.Fondo;
 
 public class Libro extends RecursoBiblioteca {
+	/**
+	 * El número de objetos registrados de este recurso.
+	 */
+	private static long contador = 0;
+
+	/**
+	 * Prefijo de clase para la generación de un ID.
+	 * @see services.Biblioteca
+	 */
+	private static final String PREFIJO_ID = "LIB";
+
+	/**
+	 * El nombre completo del autor del libro.
+	 */
 	private String autor;
-	private static int contador = 0;
 	
 	/**
 	 * Constructor heredado.
-	 * @param autor
+	 * @param {@code autor}, el autor del libro.
+	 * @param autor a
 	 */
 	public Libro(String titulo, Fondo fondo, String autor) {
 		super(titulo, fondo);
@@ -23,19 +37,26 @@ public class Libro extends RecursoBiblioteca {
 		this.autor = autor;
 	}
 	
+	public long getContador() {
+		return contador;
+	}
+
+	@Override
+	public String getPrefijoId() {
+		return PREFIJO_ID;
+	}
+	
 	/**
-	 * Genera un identificador de tipo LIB-01234.
-	 * El número puede tener más de 5 cifras, pero si tiene menos se rellenarán con ceros
+	 * Suma 1 al contador y lo devuelve.
+	 * @return {@code contador}, una vez incrementado en una unidad
 	 */
 	@Override
-	public String generarId() {
-		return "LIB-" + String.format("%05d", ++contador);
+	public long incrementarContador() {
+		return ++contador;
 	}
 
 	@Override
 	public String toString() {
-		return id + ": " + titulo + " (" + autor + ") [FONDO " + fondo + "] [ESTADO " + estado + "]";
+		return titulo + " (" + autor + ") [FONDO " + fondo + "] [ESTADO " + estado + "]";
 	}
-	
-	
 }
