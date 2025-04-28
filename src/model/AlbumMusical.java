@@ -1,8 +1,9 @@
 package model;
 
 import enums.Fondo;
+import enums.FormatoDisco;
 
-public class Libro extends RecursoBiblioteca {
+public class AlbumMusical extends Disco {
 	/**
 	 * El número de objetos registrados de este recurso.
 	 */
@@ -12,27 +13,18 @@ public class Libro extends RecursoBiblioteca {
 	 * Prefijo de clase para la generación de un ID.
 	 * @see services.Biblioteca
 	 */
-	private static final String PREFIJO_ID = "LIB";
+	private static final String PREFIJO_ID = "MUS";
 
 	/**
-	 * El nombre completo del autor del libro.
+	 * El nombre del artista o grupo del álbum musical.
 	 */
 	private String autor;
 	
 	/**
 	 * Constructor de la clase.
 	 */
-	public Libro(String titulo, Fondo fondo, String autor) {
-		super(titulo, fondo);
-		this.autor = autor;
-	}
-
-	public String getAutor() {
-		return autor;
-	}
-
-	public void setAutor(String autor) {
-		this.autor = autor;
+	public AlbumMusical(String titulo, Fondo fondo, int duracion, FormatoDisco formato, String autor) {
+		super(titulo, fondo, duracion, formato, autor);
 	}
 	
 	public long getContador() {
@@ -55,6 +47,6 @@ public class Libro extends RecursoBiblioteca {
 
 	@Override
 	public String toString() {
-		return this.titulo + " (" + this.autor + ") [FONDO " + this.fondo + "] [ESTADO " + this.estado + "]";
+		return this.titulo + " (" + this.autor + ") " + this.duracion + " min, [" + this.formato + "] [FONDO " + this.fondo + "] [ESTADO " + this.estado + "]";
 	}
 }

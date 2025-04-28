@@ -114,7 +114,7 @@ public class Biblioteca implements Prestable {
 			
 			recurso.setEstado(EstadoRecurso.PRESTADO);
 			usuario.getRecursosEnPrestamo().put(idRecurso, recurso);
-			System.out.println("Se ha realizado el préstamo de " + recurso.getTitulo() + " a " + usuario.getNombre() + " " + usuario.getApellidos() + ".");
+			System.out.println("Se ha realizado el préstamo de '" + recurso.getTitulo() + "' a " + usuario.getNombre() + " " + usuario.getApellidos() + ".");
 		} catch(Exception e) {
 			System.err.println("Error: " + e.getMessage());
 			System.out.println("No se pudo realizar el préstamo del recurso solicitado.");
@@ -138,7 +138,7 @@ public class Biblioteca implements Prestable {
 			
 			recurso.setEstado(EstadoRecurso.DISPONIBLE);
 			usuario.getRecursosEnPrestamo().remove(idRecurso, recurso);
-			System.out.println("Se ha realizado la devolución de " + recurso.getTitulo() + ".");
+			System.out.println("Se ha realizado la devolución de '" + recurso.getTitulo() + "'.");
 		} catch(Exception e) {
 			System.err.println("Error: " + e.getMessage());
 			System.out.println("No se pudo realizar la devolución del recurso solicitado.");

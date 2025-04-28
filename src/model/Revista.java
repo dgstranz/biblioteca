@@ -2,7 +2,7 @@ package model;
 
 import enums.Fondo;
 
-public class Libro extends RecursoBiblioteca {
+public class Revista extends RecursoBiblioteca {
 	/**
 	 * El número de objetos registrados de este recurso.
 	 */
@@ -12,29 +12,30 @@ public class Libro extends RecursoBiblioteca {
 	 * Prefijo de clase para la generación de un ID.
 	 * @see services.Biblioteca
 	 */
-	private static final String PREFIJO_ID = "LIB";
-
+	private static final String PREFIJO_ID = "REV";
+	
 	/**
-	 * El nombre completo del autor del libro.
+	 * Número de edición de la revista.
 	 */
-	private String autor;
+	protected int numero;
 	
 	/**
 	 * Constructor de la clase.
 	 */
-	public Libro(String titulo, Fondo fondo, String autor) {
+	public Revista(String titulo, Fondo fondo, int numero) {
 		super(titulo, fondo);
-		this.autor = autor;
-	}
-
-	public String getAutor() {
-		return autor;
-	}
-
-	public void setAutor(String autor) {
-		this.autor = autor;
+		this.numero = numero;
 	}
 	
+	// Getters y setters
+	public int getNumero() {
+		return numero;
+	}
+
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
+
 	public long getContador() {
 		return contador;
 	}
@@ -55,6 +56,6 @@ public class Libro extends RecursoBiblioteca {
 
 	@Override
 	public String toString() {
-		return this.titulo + " (" + this.autor + ") [FONDO " + this.fondo + "] [ESTADO " + this.estado + "]";
+		return this.titulo + " n.º " + this.numero + ") [FONDO " + this.fondo + "] [ESTADO " + this.estado + "]";
 	}
 }

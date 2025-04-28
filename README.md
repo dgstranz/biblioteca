@@ -59,8 +59,9 @@ comentar un método se inicia con `/**` y se cierra con `*/`)
   * [x] Subclases de RecursoBiblioteca
 
 	* [x] `Libro (String autor)`
-	* [ ] `Revista (int numeroEdicion)`
-	* [ ] `DVD (int duracionMinutos)`
+	* [x] `Revista (int numeroEdicion)`
+	* [x] `DiscoMusical (int duracion)`
+	* [x] `Pelicula (int duracion)`
 	* [ ] Cada subclase debe:
 
       * [x] Llamar al constructor de la superclase.
