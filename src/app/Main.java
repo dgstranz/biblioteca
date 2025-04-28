@@ -45,6 +45,7 @@ public class Main {
 			biblioteca.prestar(gb.getUsuario(1), "ACA-00001");
 			biblioteca.devolver(gb.getUsuario(1), "LIB-00001");
 			biblioteca.devolver(gb.getUsuario(1), "LIB-00001");
+			biblioteca.listarRecursos();
 		} catch(Exception e) {
 			System.err.println("Error: " + e.getMessage());
 		}

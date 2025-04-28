@@ -11,27 +11,27 @@ La Biblioteca Central Universitaria quiere modernizar su proceso de préstamo y 
 
    * [x] La Biblioteca contiene múltiples `Estanteria`s.
    * [ ] Cada `Estanteria` aloja varios `RecursoBiblioteca`.
-   * [ ] `RecursoBiblioteca` es una clase abstracta de la cual heredan `Libro`, `Revista` y `DVD`.
-   * [ ] Un `Usuario` puede tomar prestado o devolver cualquier `RecursoBiblioteca`.
+   * [x] `RecursoBiblioteca` es una clase abstracta de la cual heredan `Libro`, `Revista` y `DVD`.
+   * [x] Un `Usuario` puede tomar prestado o devolver cualquier `RecursoBiblioteca`.
 
 2. Operaciones de préstamo
 
-   * [ ] Prestar un recurso solo si está `DISPONIBLE`.
-   * [ ] Devolver un recurso prestado.
-   * [ ] Mostrar por pantalla mensajes claros del estado antes y después de cada operación.
+   * [x] Prestar un recurso solo si está `DISPONIBLE`.
+   * [x] Devolver un recurso prestado.
+   * [x] Mostrar por pantalla mensajes claros del estado antes y después de cada operación.
 
 3. Estados
 
-   * [ ] Cada recurso mantiene un `EstadoRecurso` (`DISPONIBLE`, `PRESTADO`, `RESERVADO`).
-   * [ ] Al prestar cambia a `PRESTADO`; al devolver a `DISPONIBLE`.
+   * [x] Cada recurso mantiene un `EstadoRecurso` (`DISPONIBLE`, `PRESTADO`, `RESERVADO`).
+   * [x] Al prestar cambia a `PRESTADO`; al devolver a `DISPONIBLE`.
 
 4. Interacción
 
    * El programa principal (Main) leerá comandos por consola o iniciará el menú con, mínimo, estas opciones:
 
-     * [ ] `prestar <idRecurso> <idUsuario>`
-     * [ ] `devolver <idRecurso>`
-     * [ ] `listar` (opcional: muestra todos los recursos con su estado).
+     * [x] `prestar <idRecurso> <idUsuario>`
+     * [x] `devolver <idRecurso>`
+     * [x] `listar` (opcional: muestra todos los recursos con su estado).
 
 
 
@@ -62,7 +62,7 @@ comentar un método se inicia con `/**` y se cierra con `*/`)
 	* [x] `Revista (int numeroEdicion)`
 	* [x] `DiscoMusical (int duracion)`
 	* [x] `Pelicula (int duracion)`
-	* [ ] Cada subclase debe:
+	* [x] Cada subclase debe:
 
       * [x] Llamar al constructor de la superclase.
       * [x] Implementar `descripcion()` retornando todos sus datos.

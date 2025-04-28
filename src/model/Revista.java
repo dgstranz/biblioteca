@@ -56,6 +56,6 @@ public class Revista extends RecursoBiblioteca {
 
 	@Override
 	public String toString() {
-		return this.titulo + " n.º " + this.numero + ") [FONDO " + this.fondo + "] [ESTADO " + this.estado + "]";
+		return this.titulo + " n.º " + this.numero + " [FONDO " + this.fondo + "] [ESTADO " + this.estado + "]";
 	}
 }

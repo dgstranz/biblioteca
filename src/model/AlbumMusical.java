@@ -26,7 +26,7 @@ public class AlbumMusical extends Disco {
 	public AlbumMusical(String titulo, Fondo fondo, int duracion, FormatoDisco formato, String autor) {
 		super(titulo, fondo, duracion, formato, autor);
 	}
-	
+
 	public long getContador() {
 		return contador;
 	}
@@ -47,6 +47,6 @@ public class AlbumMusical extends Disco {
 
 	@Override
 	public String toString() {
-		return this.titulo + " (" + this.autor + ") " + this.duracion + " min, [" + this.formato + "] [FONDO " + this.fondo + "] [ESTADO " + this.estado + "]";
+		return this.titulo + " (" + this.getAutor() + ") " + this.duracion + " min, [" + this.formato + "] [FONDO " + this.fondo + "] [ESTADO " + this.estado + "]";
 	}
 }

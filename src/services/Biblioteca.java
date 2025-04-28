@@ -18,6 +18,7 @@ import model.Usuario;
 public class Biblioteca implements Prestable {
 	private Map<String, RecursoBiblioteca> recursos;
 	// TODO crear un Map de reservas de un recurso (identificado por su ID) a un usuario
+	// TODO incluir campos nombre e identificador para la biblioteca
 	
 	/**
 	 * Constructor de biblioteca
@@ -143,5 +144,23 @@ public class Biblioteca implements Prestable {
 			System.err.println("Error: " + e.getMessage());
 			System.out.println("No se pudo realizar la devolución del recurso solicitado.");
 		}
+	}
+	
+	public void listarRecursos() {
+		System.out.println("RECURSOS DE LA BIBLIOTECA");
+		System.out.println("=========================");
+		recursos.forEach((id, recurso) -> {
+			System.out.println(id + ": " + recurso.toString());
+		});
+	}
+	
+	public void listarRecursosDisponibles() {
+		System.out.println("RECURSOS DISPONIBLES");
+		System.out.println("====================");
+		recursos.forEach((id, recurso) -> {
+			if(recurso.getEstado() == EstadoRecurso.DISPONIBLE) {
+				System.out.println(id + ": " + recurso.toString());
+			}
+		});
 	}
 }

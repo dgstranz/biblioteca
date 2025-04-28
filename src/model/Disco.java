@@ -23,7 +23,7 @@ public abstract class Disco extends RecursoBiblioteca {
 
 	/**
 	 * Constructor heredado.
-	 * @param {@code autor}, el autor del libro.
+	 * @param {@code autor}, el autor del disco.
 	 * @param autor
 	 */
 	public Disco(String titulo, Fondo fondo, int duracion, FormatoDisco formato, String autor) {
@@ -55,5 +55,10 @@ public abstract class Disco extends RecursoBiblioteca {
 
 	public void setAutor(String autor) {
 		this.autor = autor;
+	}
+
+	@Override
+	public String toString() {
+		return this.titulo + " (" + this.autor + ") " + this.duracion + " min, [" + this.formato + "] [FONDO " + this.fondo + "] [ESTADO " + this.estado + "]";
 	}
 }
