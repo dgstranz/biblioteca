@@ -7,16 +7,17 @@ import enums.EstadoRecurso;
 import enums.Fondo;
 import enums.TipoUsuario;
 import exceptions.AccesoFondoNoPermitidoException;
+import exceptions.IdentificadorNoValidoException;
 import exceptions.LimitePrestamosAlcanzadosException;
 import exceptions.RecursoNoDisponibleException;
 import exceptions.RecursoNoEncontradoException;
-import exceptions.UsuarioNoEncontradoException;
 import interfaces.Prestable;
 import model.RecursoBiblioteca;
 import model.Usuario;
 
 public class Biblioteca implements Prestable {
 	private Map<String, RecursoBiblioteca> recursos;
+	// TODO crear un Map de reservas de un recurso (identificado por su ID) a un usuario
 	
 	/**
 	 * Constructor de biblioteca
@@ -44,24 +45,28 @@ public class Biblioteca implements Prestable {
 	 * Obtiene un recurso a partir de su identificador.
 	 * @param id
 	 * @return el recurso con ese identificador
+	 * @throws IdentificadorNoValidoException
 	 * @throws RecursoNoEncontradoException
 	 */
-	public RecursoBiblioteca getRecurso(String id) throws RecursoNoEncontradoException {
-		RecursoBiblioteca recurso = this.recursos.getOrDefault(id, null);
-		if(recurso == null) {
-			throw new RecursoNoEncontradoException("No existe el recurso con ID " + id + ".");
-		} else {
-			return recurso;
+	public RecursoBiblioteca getRecurso(String id) throws IdentificadorNoValidoException, RecursoNoEncontradoException {
+		if(!id.matches("^[A-Z]{3}-[0-9]{5,}$")) {
+			throw new IdentificadorNoValidoException("ID mal formado.");
+		} else if(!this.recursos.containsKey(id)) {
+			throw new RecursoNoEncontradoException("No existe el recurso con ID " + id + " en esta biblioteca.");
 		}
+		
+		RecursoBiblioteca recurso = this.recursos.get(id);
+		return recurso;
 	}
 
 	/**
 	 * Devuelve una descripción de un recurso a partir de su identificador.
 	 * @param id
 	 * @return el identificador y el método {@code toString()} del recurso buscado
+	 * @throws IdentificadorNoValidoException
 	 * @throws RecursoNoEncontradoException
 	 */
-	public String getDescripcionRecurso(String id) throws RecursoNoEncontradoException {
+	public String getDescripcionRecurso(String id) throws IdentificadorNoValidoException, RecursoNoEncontradoException {
 		RecursoBiblioteca recurso = getRecurso(id);
 		return id + ": " + recurso.toString();
 	}
@@ -75,7 +80,7 @@ public class Biblioteca implements Prestable {
 	 * @throws RecursoNoDisponibleException
 	 */
 	@Override
-	public boolean prestar(Usuario usuario, String idRecurso) {
+	public void prestar(Usuario usuario, String idRecurso) {
 		try {
 			RecursoBiblioteca recurso = getRecurso(idRecurso);
 
@@ -109,16 +114,34 @@ public class Biblioteca implements Prestable {
 			
 			recurso.setEstado(EstadoRecurso.PRESTADO);
 			usuario.getRecursosEnPrestamo().put(idRecurso, recurso);
-			System.out.println("Se ha realizado el préstamo de " + recurso.getTitulo() + " a " + usuario.getNombre() + " " + usuario.getApellidos());
+			System.out.println("Se ha realizado el préstamo de " + recurso.getTitulo() + " a " + usuario.getNombre() + " " + usuario.getApellidos() + ".");
 		} catch(Exception e) {
 			System.err.println("Error: " + e.getMessage());
-		} 
-		return false;
+			System.out.println("No se pudo realizar el préstamo del recurso solicitado.");
+		}
 	}
 
+	/**
+	 * Realiza la devolución de un determinado recurso, identificado por su {@code id}, a la biblioteca.
+	 * @param usuario
+	 * @param idRecurso
+	 * @throws RecursoNoEncontradoException
+	 */
 	@Override
-	public boolean devolver(Usuario usuario, String idRecurso) {
-		// TODO Auto-generated method stub
-		return false;
+	public void devolver(Usuario usuario, String idRecurso) {
+		try {
+			RecursoBiblioteca recurso = getRecurso(idRecurso);
+			
+			if(!usuario.getRecursosEnPrestamo().containsKey(idRecurso)) {
+				throw new RecursoNoEncontradoException("El usuario no tiene el recurso con ID " + idRecurso + ".");
+			}
+			
+			recurso.setEstado(EstadoRecurso.DISPONIBLE);
+			usuario.getRecursosEnPrestamo().remove(idRecurso, recurso);
+			System.out.println("Se ha realizado la devolución de " + recurso.getTitulo() + ".");
+		} catch(Exception e) {
+			System.err.println("Error: " + e.getMessage());
+			System.out.println("No se pudo realizar la devolución del recurso solicitado.");
+		}
 	}
 }

@@ -48,11 +48,11 @@ biblioteca/
 
 * [x] `biblioteca.interfaces.Prestamista`
 
-  * [ ] Métodos `boolean prestar(RecursoBiblioteca recurso, Usuario usuario)` y `boolean devolver(RecursoBiblioteca recurso)`.
-  * [ ] Explica en comentarios qué hace cada método. (Recuerda que para
+  * [x] Métodos `boolean prestar(RecursoBiblioteca recurso, Usuario usuario)` y `boolean devolver(RecursoBiblioteca recurso)`.
+  * [x] Explica en comentarios qué hace cada método. (Recuerda que para
 comentar un método se inicia con `/**` y se cierra con `*/`)
 
-* [ ] `biblioteca.model.RecursoBiblioteca` - Clase abstracta con atributos `id`, `titulo` y `estado`.
+* [x] `biblioteca.model.RecursoBiblioteca` - Clase abstracta con atributos `id`, `titulo` y `estado`.
 
   * [x] Constructor para `id` y `titulo`.
   * [x] Getter para título y método abstracto `String descripcion()`.
